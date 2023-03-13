@@ -156,6 +156,7 @@ int read_hex(FILE *f, memory_func memory, void *memory_arg, int bad_checksum_is_
         printf("Skipped %d bytes.\n", skipped_bytes);
     }
 
+    #if 0
     if (start_execution >= 0)
         printf("start execution at 0x%08X\n", (uint32_t)start_execution);
 
@@ -164,7 +165,7 @@ int read_hex(FILE *f, memory_func memory, void *memory_arg, int bad_checksum_is_
 
     if (start_segment_ip >= 0)
         printf("Instruction Pointer register: 0x%04X\n", start_segment_ip);
-
+    #endif
     return 1;
 }
 
