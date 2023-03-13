@@ -16,3 +16,7 @@ clean:
 
 hex2bin.o: hex2bin.c readhex.h
 hexinfo.o: hexinfo.c readhex.h
+
+install:
+	cp hexinfo /Users/tor/bin
+	cp hex2bin /Users/tor/bin

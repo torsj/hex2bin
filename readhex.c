@@ -24,7 +24,7 @@ static uint8_t get_nybble(uint8_t *s)
     } else if (*s >= 'A' && *s <= 'F') {
         value = *s - 'A' + 10;
     } else {
-        printf("Invalid hex character: %c\n", *s);
+        printf("Invalid hex character: 0x%02x %c\n", *s, *s);
         value = 0;
     }
 
@@ -54,7 +54,7 @@ int read_hex(FILE *f, memory_func memory, void *memory_arg, int bad_checksum_is_
     int address;
     uint8_t checksum;
     int i;
-    char line[256];
+    char line[600];         // max 0xff bytes in a line, 510 characters + 15 overhead is < 600
     int line_number = 0;
     int skipped_bytes = 0;
 
@@ -156,6 +156,7 @@ int read_hex(FILE *f, memory_func memory, void *memory_arg, int bad_checksum_is_
         printf("Skipped %d bytes.\n", skipped_bytes);
     }
 
+    #if 0
     if (start_execution >= 0)
         printf("start execution at 0x%08X\n", (uint32_t)start_execution);
 
@@ -164,7 +165,7 @@ int read_hex(FILE *f, memory_func memory, void *memory_arg, int bad_checksum_is_
 
     if (start_segment_ip >= 0)
         printf("Instruction Pointer register: 0x%04X\n", start_segment_ip);
-
+    #endif
     return 1;
 }
 
